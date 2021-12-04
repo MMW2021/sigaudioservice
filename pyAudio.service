@@ -1,0 +1,48 @@
+
+[Unit]
+
+# description used by systemd
+Description=Audio Service for signifiers
+
+# waits til sound has loaded and bluetooth has loaded before playing
+After=sound.target bluetooth.target
+[Service]
+
+
+# the working directory of the service;
+
+# need to find a way of getting envronment variables into service files
+# WorkingDirectory=/home/${USER}/PYSIG/pysigAUDIO/
+
+#the start
+# set a timeout before starting (wait for the bluetooth device to pair correctly?
+TimeoutStartSec=5
+
+#check that audio is able to play
+# ExecStartPre=aplay -l
+ExecStart=/usr/bin/python3 "/home/pi/PYSIG/pysigAUDIO/pysigAUDIO.py"
+# set a timeout of 20 secs to avoid restart loops
+TimeoutStopSec=5
+
+
+
+# always restart
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+Alias=pysigaudio.service
+
+
+# TO TEST
+#possible to check for a specific sound card
+# After=sys-devices-pci0000:00-0000:00:05.0-sound-card0.device
+# add require to script
+
+#[Unit]
+
+# find sound decice
+# Requires=$D
+
+
