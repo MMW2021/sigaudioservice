@@ -17,10 +17,10 @@ Description=Audio Service for signifiers
 #the start
 # set a timeout before starting (wait for the bluetooth device to pair correctly?
 TimeoutStartSec=5
-
+User=root
 #check that audio is able to play
 # ExecStartPre=aplay -l
-ExecStart=/usr/bin/python3 "/home/pi/PYSIG/pysigAUDIO/pysigAUDIO.py"
+ExecStart=sudo /usr/bin/python3 "/home/pi/PYSIG/pysigAUDIO/pysigAUDIO.py" && usbreset "JieLi BR17"
 # set a timeout of 20 secs to avoid restart loops
 TimeoutStopSec=5
 

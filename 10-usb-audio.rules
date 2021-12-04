@@ -1,0 +1,1 @@
+ATTRS{manufacturer}=="ZhuHai JieLi Technology" ACTION=="add", RUN+="sleep 5 && sudo /bin/systemctl restart pyAudio.service"
