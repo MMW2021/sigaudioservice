@@ -5,7 +5,7 @@
 Description=Audio Service for signifiers
 
 # waits til sound has loaded and bluetooth has loaded before playing
-After=sound.target bluetooth.target
+# After=sound.target bluetooth.target
 [Service]
 
 
